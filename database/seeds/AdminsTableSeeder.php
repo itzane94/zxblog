@@ -1,0 +1,18 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class AdminsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory('App\Admin',2)->create([
+            'password'=>bcrypt('abcd83319257')
+        ]);
+    }
+}
