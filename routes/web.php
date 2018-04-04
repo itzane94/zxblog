@@ -22,6 +22,9 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/home','Dashboard\DashboardController@index');
     Route::get('/home/welcome','Dashboard\DashboardController@welcome');
     Route::get('/logout','User\UserController@logout');
+    Route::get('/info','User\UserController@adminInfo');
+    Route::get('/article/list','Article\ArticleController@index');
+    Route::get('/article/list_data','Article\ArticleController@list');
 });
 
 Auth::routes();

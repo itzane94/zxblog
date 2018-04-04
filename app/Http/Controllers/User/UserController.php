@@ -41,6 +41,9 @@ class UserController extends Controller
         Auth::guard('admin')->logout();
         return Redirect::route('admin_login');
     }
+    public function adminInfo(){
+        return view('dashboard.info');
+    }
 
 
 }
