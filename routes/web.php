@@ -25,6 +25,15 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/info','User\UserController@adminInfo');
     Route::get('/article/list','Article\ArticleController@index');
     Route::get('/article/list_data','Article\ArticleController@list');
+    Route::post('/article/del','Article\ArticleController@delete');
+    Route::get('/article/add','Article\ArticleController@add');
+    Route::post('/article/add','Article\ArticleController@add');
+    Route::get('/article/edit/{article}','Article\ArticleController@edit')->where('article', '[0-9]+');
+    Route::post('/article/edit/{article}','Article\ArticleController@edit')->where('article', '[0-9]+');
+    Route::get('/picture/tree','Picture\PictureController@tree');
+    Route::post('/picture/upload','Picture\PictureController@upload');
+    Route::get('/picture/delete','Picture\PictureController@delete');
+    Route::get('/picture/board','Picture\PictureController@board');
 });
 
 Auth::routes();

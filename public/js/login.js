@@ -25,7 +25,6 @@ function login(){
         $('#captcha').focus();
         return false;
     }
-
     $.post(loginHandleUrl,{'name':$('#admin_name').val(), 'password':$('#admin_password').val(),'captcha': $('#captcha').val(),'_token':_token},function(data){
     	if(data.status != 200){
             verifyimage();

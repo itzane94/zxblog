@@ -20,5 +20,6 @@ class TypeTableSeeder extends Seeder
             'name'=>'PHP',
             'pid'=>'0'
         ]);
+
     }
 }
