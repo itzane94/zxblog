@@ -61,16 +61,16 @@
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">封面图片</label>
+                        <label class="col-sm-2 control-label">封面</label>
 
                         <div class="col-sm-6">
-                            <label><img id="cover" src="/images/placeholder.png" alt="no images" width="120" height="90" class="img-thumbnail"><span style="padding:0 20px;"><label class="btn btn-outline">更换</label></span></label>
+                            <label><img id="cover" src="/images/placeholder.png" alt="no images" width="120" height="90" class="img-thumbnail"><span style="padding:0 20px;"><label class="btn btn-outline" onclick="setGravatar()"><i class="glyphicon glyphicon-plus"></i></label></span></label>
                         </div>
                     </div>
                     <!--edit-->
                         <label class="col-sm-12 control-label">
                             <div class="ibox-content checkForm">
-                                <textarea name="content" id="content" data-provide="markdown" rows="12"></textarea>
+                                <textarea name="content" id="content" data-provide="markdown" data-iconlibrary="fa" rows="12"></textarea>
                             </div>
                         </label>
                     <div class="form-group">
@@ -84,7 +84,7 @@
 
 
 </div>
-
+<div style="position:absolute;top:40%;right:5px;z-index:2;"><button class="btn btn-danger" onclick="imgList()"><i class="glyphicon glyphicon-bookmark"></i></button></div>
 <!-- 全局js -->
 <script src="/admin/js/jquery.min.js?v=2.1.4"></script>
 <script src="/admin/js/bootstrap.min.js?v=3.3.6"></script>
@@ -101,6 +101,9 @@
 <script src="/admin/js/plugins/layer/layer.min.js"></script>
 <!--统计代码，可删除-->
 <script>
+    $(function(){
+        layer.config({extend: 'extend/layer.ext.js'});
+    });
     function addForm(){
         $.post(
             "{{url('/admin/article/add')}}",
@@ -138,6 +141,25 @@
             'json'
         );
         return false;
+    }
+    function imgList() {
+        layer.open({
+            type: 2,
+            title: '图片列表',
+            shadeClose: true,
+            shade: false,
+            offset:['4%','70%'],
+            area: ['30%', '90%'],
+            content: "{{url('/admin/picture/board')}}", //iframe的url
+        });
+    }
+    function setGravatar(){
+        layer.prompt({
+            title:'url路径'
+        },function(value, index, elem){
+            $('#cover').attr('src',value);
+            layer.close(index);
+        });
     }
 </script>
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function login(Request $request){
@@ -37,6 +38,39 @@ class UserController extends Controller
             }
         }
     }
+    public function edit(){
+        $formData = Input::only(['name','email','password','gravatar','autograph']);
+        $validator = validator::make($formData,[
+            'name'=>'required|min:6|max:16',
+            'email'=>'required|email',
+            'gravatar'=>'required|max:200',
+            'autograph'=>'required|max:200'
+        ]);
+        if($validator->passes()){
+            $admin = DB::table('admins')->where('id','=',Auth::guard('admin')->user()->id);
+            $update = [
+                "name"=>$formData['name'],
+                "email"=>$formData['email'],
+                "gravatar"=>$formData['gravatar'],
+                "autograph"=>$formData['autograph'],
+            ];
+            if($formData['password']){
+                $update['password'] = bcrypt($formData['password']);
+            }
+            if($admin->update($update)){
+                return response()->json([
+                    'status'=>'success'
+                ]);
+            }else{
+                return response()->json([
+                    'status'=>'fail'
+                ]);
+            }
+        }else{
+            $errors = $validator->errors();
+            return response()->json($errors);
+        }
+    }
     public function logout(){
         Auth::guard('admin')->logout();
         return Redirect::route('admin_login');
@@ -44,6 +78,8 @@ class UserController extends Controller
     public function adminInfo(){
         return view('dashboard.info');
     }
-
+    public function about(){
+        return view('user/about')->with(['active'=>4]);
+    }
 
 }

@@ -21,41 +21,171 @@
 </head>
 
 <body class="gray-bg">
-<div class="row  border-bottom white-bg dashboard-header">
-    <div class="col-sm-12">
-        <blockquote class="text-warning" style="font-size:14px">您是否需要自己做一款后台、会员中心等等的，但是又缺乏html等前端知识…
-            <br>您是否一直在苦苦寻找一款适合自己的后台主题…
-            <br>您是否想做一款自己的web应用程序…
-            <br>…………
-            <h4 class="text-danger">那么，现在H+来了</h4>
-        </blockquote>
+<div class="wrapper wrapper-content animated fadeInRight" style="padding:0px;">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <form id="admin" method="post" class="form-horizontal">
+                <div class="form-group checkForm">
+                    <label class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="username" class="form-control" value="{{Auth::guard('admin')->user()->name}}">
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group checkForm">
+                    <label class="col-sm-2 control-label">邮箱</label>
+                    <div class="col-sm-10">
+                        <input type="email" id="email" class="form-control" name="email" required value="{{Auth::guard('admin')->user()->email}}" placeholder="邮箱">
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group checkForm">
+                    <label class="col-sm-2 control-label">签名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required id="autograph" name="autograph" value="{{Auth::guard('admin')->user()->autograph}}" placeholder="个人签名">
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">封面图片</label>
 
-        <hr>
+                    <div class="col-sm-6">
+                        <label><img id="gravatar" src="{{Auth::guard('admin')->user()->gravatar}}" alt="no images" width="120" height="90" class="img-thumbnail"><span style="padding:0 20px;"><label class="btn btn-outline" onclick="setCover()"><i class="glyphicon glyphicon-plus"></i></label></span></label>
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">更改密码</label>
+                    <div class="col-sm-10">
+                        <div class="switch">
+                            <div class="onoffswitch">
+                                <input type="checkbox" class="onoffswitch-checkbox" id="confirm">
+                                <label class="onoffswitch-label" for="confirm">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pwd-toggle" hidden>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group checkForm">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input type="password" style="display:none;">
+                            <input type="password" autoComplete="off" class="form-control" id="password" name="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button class="btn btn-info" type="button" onclick="submitInfo();">确认修改</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="col-sm-3">
-
-    </div>
-    <div class="col-sm-5">
-
-    </div>
-    <div class="col-sm-4">
-
-    </div>
-
 </div>
-
-
-
+<div style="position:absolute;top:40%;right:5px;z-index:2;"><button class="btn btn-danger" onclick="imgList()"><i class="glyphicon glyphicon-bookmark"></i></button></div>
 <!-- 全局js -->
 <script src="/admin/js/jquery.min.js?v=2.1.4"></script>
 <script src="/admin/js/bootstrap.min.js?v=3.3.6"></script>
 <script src="/admin/js/plugins/layer/layer.min.js"></script>
-
+<script src="/admin/js/plugins/validate/jquery.validate.min.js"></script>
 <!-- 自定义js -->
 <script src="/admin/js/content.js"></script>
 
 <!-- 欢迎信息 -->
 <script src="/admin/js/welcome.js"></script>
+<script>
+    $(function(){
+        layer.config({extend: 'extend/layer.ext.js'});
+    });
+    function submitInfo(){
+        var name = $('#username').val();
+        var email = $('#email').val();
+        var autograph = $('#autograph').val();
+        var gravatar = $('#gravatar').attr('src');
+        var password = $('#password').val();
+        var flag = true;
+        if(name.length<=0){
+            $('.checkForm').eq(0).addClass('has-error');
+            flag = false;
+        }else{
+            $('.checkForm').eq(0).removeClass('has-error');
+        }
+        if(email.length<=0){
+            $('.checkForm').eq(1).addClass('has-error');
+            flag = false;
+        }else{
+            $('.checkForm').eq(1).removeClass('has-error');
+        }
+        if(autograph.length<=0){
+            $('.checkForm').eq(2).addClass('has-error');
+            flag = false;
+        }else{
+            $('.checkForm').eq(2).removeClass('has-error');
+        }
+        if(!flag)
+            return;
+        $.post(
+            '/admin/edit',
+            {
+                _token:"{{csrf_token()}}",
+                name:name,
+                email:email,
+                autograph:autograph,
+                gravatar:gravatar,
+                password:password
+            },
+            function(response){
+                if(response.status == 'success'){
+                    parent.parent.layer.msg('修改成功,为您刷新登个人信息',{
+                        time:2000
+                    });
+                    setTimeout(function(){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        window.location.reload();
+                    },2000);
+                }else{
+
+                }
+            },
+            'json'
+        );
+
+    }
+    function imgList() {
+        layer.open({
+            type: 2,
+            title: '图片列表',
+            shadeClose: true,
+            shade: false,
+            offset:['4%','70%'],
+            area: ['30%', '90%'],
+            content: "{{url('/admin/picture/board')}}", //iframe的url
+        });
+    }
+    function setCover(){
+        layer.prompt({
+            title:'url路径'
+        },function(value, index, elem){
+            $('#gravatar').attr('src',value);
+            layer.close(index);
+        });
+    }
+    $('#confirm').change(function(){
+        if($(this).is(':checked')){
+            $("#pwd-toggle").fadeIn();
+        }else{
+            $("#pwd-toggle").fadeOut();
+            $('#password').val('');
+        }
+    });
+</script>
 </body>
 
 </html>

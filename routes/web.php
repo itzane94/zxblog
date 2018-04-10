@@ -10,10 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::group(['prefix'=>'admin','namespace'=>'User'],function(){
     Route::get('/login','UserController@login')->name('admin_login');
     Route::post('/login','UserController@login');
@@ -34,8 +30,11 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::post('/picture/upload','Picture\PictureController@upload');
     Route::get('/picture/delete','Picture\PictureController@delete');
     Route::get('/picture/board','Picture\PictureController@board');
+    Route::post('/edit','User\UserController@edit');
 });
-
+Route::get('/','Home\HomepageController@index');
+Route::get('/blog','Article\ArticleController@blog');
+Route::get('/archive','Article\ArticleController@archive');
+Route::get('/about','User\UserController@about');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

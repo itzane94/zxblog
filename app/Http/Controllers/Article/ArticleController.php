@@ -137,4 +137,10 @@ class ArticleController extends Controller
         }
         return $newlist;
     }
+    public function blog(){
+        return view('article/blog')->with(['active'=>2]);
+    }
+    public function archive(){
+        return view('article/archive')->with(['active'=>3]);
+    }
 }

@@ -31,15 +31,15 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <span><img alt="image" class="img-circle" src="/admin/img/profile_small.jpg" /></span>
+                        <span><img alt="image" class="img-circle img-responsive" style="width:64px;height:64px;overflow: hidden" src="{{ Auth::guard('admin')->user()->gravatar }}" /></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">P ZQAE TQR</strong></span>
+                               <span class="block m-t-xs"><strong class="font-bold">{{ Auth::guard('admin')->user()->autograph}}</strong></span>
                                 <span class="text-muted text-xs block">{{ Auth::guard('admin')->user()->name }}<b class="caret"></b></span>
                                 </span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a class="J_menuItem" href="{{url('/admin/info')}}">个人资料</a>
+                            <li><a href="#" onclick="adminInfo()">个人资料</a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="{{url('/admin/logout')}}">安全退出</a>
@@ -160,10 +160,6 @@
 
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
-                    <div class="sidebar-title">
-                        <h3> <i class="fa fa-comments-o"></i> 主题设置</h3>
-                        <small><i class="fa fa-tim"></i> 你可以从这里选择和预览主题的布局和样式，这些设置会被保存在本地，下次打开的时候会直接应用这些设置。</small>
-                    </div>
                     <div class="skin-setttings">
                         <div class="title">主题设置</div>
                         <div class="setings-item">
@@ -205,28 +201,6 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="title">皮肤选择</div>
-                        <div class="setings-item default-skin nb">
-                                <span class="skin-name ">
-                         <a href="#" class="s-skin-0">
-                             默认皮肤
-                         </a>
-                    </span>
-                        </div>
-                        <div class="setings-item blue-skin nb">
-                                <span class="skin-name ">
-                        <a href="#" class="s-skin-1">
-                            蓝色主题
-                        </a>
-                    </span>
-                        </div>
-                        <div class="setings-item yellow-skin nb">
-                                <span class="skin-name ">
-                        <a href="#" class="s-skin-3">
-                            黄色/紫色主题
-                        </a>
-                    </span>
                         </div>
                     </div>
                 </div>
@@ -294,7 +268,18 @@
 
 <!-- 第三方插件 -->
 <script src="/admin/js/plugins/pace/pace.min.js"></script>
-
+<script>
+    function adminInfo(){
+        layer.open({
+            type: 2,
+            title: '个人信息修改',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['60%', '80%'],
+            content: "{{url('/admin/info')}}", //iframe的url
+        });
+    }
+</script>
 </body>
 
 </html>
