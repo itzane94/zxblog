@@ -5019,12 +5019,15 @@ jQuery(document).ready(function($){
 
         var shift, x = 0, y = 0;
         var elem = ssc_overflowingAncestor(ssc_activeElement);
-        var clientHeight = elem.clientHeight;
-
-        if (elem == document.body) {
+        //var clientHeight = elem.clientHeight?elem.clientHeight:window.innerHeight;
+        if(elem.clientHeight != undefined){
+            clientHeight = elem.clientHeight
+        }else{
             clientHeight = window.innerHeight;
         }
+        if (elem == document.body) {
 
+        }
         switch (event.keyCode) {
             case ssc_key.up:
                 y = -ssc_arrowscroll;

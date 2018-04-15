@@ -60,10 +60,10 @@
                             <a class="J_menuItem" href="{{url('/admin/article/list')}}" data-index="0">列表</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="index_v2.html">分类</a>
+                            <a class="J_menuItem" href="{{url('/admin/type')}}">分类</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="index_v2.html">标签</a>
+                            <a class="J_menuItem" href="{{url('/admin/tag')}}">标签</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="index_v3.html">评论</a>

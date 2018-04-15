@@ -10,6 +10,7 @@ class HomepageController extends Controller
 {
     //
     public function index(){
-        return view('home/homepage')->with(['active'=>1]);
+        $articles = Article::with('type')->orderBy('created_at','desc')->limit(7)->get()->toArray();
+        return view('home/homepage')->with(['active'=>1,'articles'=>$articles]);
     }
 }

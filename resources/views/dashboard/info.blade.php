@@ -148,9 +148,15 @@
                     setTimeout(function(){
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
-                        window.location.reload();
                     },2000);
                 }else{
+                    parent.parent.layer.msg('修改个人信息失败',{
+                        time:2000
+                    });
+                    setTimeout(function(){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                    },2000);
 
                 }
             },

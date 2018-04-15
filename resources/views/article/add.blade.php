@@ -17,6 +17,7 @@
     <link href="/admin/css/animate.css" rel="stylesheet">
     <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/admin/css/plugins/markdown/bootstrap-markdown.min.css" />
+    <link href="/admin/css/plugins/chosen/chosen.css" rel="stylesheet">
 </head>
 
 <body class="gray-bg">
@@ -39,6 +40,17 @@
                                 @foreach($types as $type)
                                 <option value="{{$type['id']}}"> @for($i=0;$i<$type['level'];$i++)&nbsp;&nbsp;@endfor{{$type['name']}}</option>
                                     @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">标签</label>
+                        <div class="col-sm-10">
+                            <select data-placeholder="选择标签" class="chosen-select" name="tags" multiple style="width:350px;" tabindex="4">
+                                @foreach($tags as $tag)
+                                <option value="{{$tag['id']}}" hassubinfo="true">{{$tag['name']}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -91,7 +103,8 @@
 
 <!-- 自定义js -->
 <script src="/admin/js/content.js?v=1.0.0"></script>
-
+<!-- Chosen -->
+<script src="/admin/js/plugins/chosen/chosen.jquery.js"></script>
 <!-- simditor -->
 <script type="text/javascript" src="/admin/js/plugins/markdown/markdown.js"></script>
 <script type="text/javascript" src="/admin/js/plugins/markdown/to-markdown.js"></script>
@@ -103,14 +116,17 @@
 <script>
     $(function(){
         layer.config({extend: 'extend/layer.ext.js'});
+        $('.chosen-select').chosen();
     });
     function addForm(){
+        var tags = $("select[name='tags']").val();
         $.post(
             "{{url('/admin/article/add')}}",
             {
             "title":$(":input[name='title']").val(),
-                "type_id":$('select').val(),
+                "type_id":$("select[name='type']").val(),
                 "cover":$('#cover').attr('src'),
+                "tags_id":tags.join(','),
                 "display":$(':radio').val(),
                 "content":$('#content').val(),
             "_token":"{{csrf_token()}}"

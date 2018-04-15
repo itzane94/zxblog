@@ -1,22 +1,9 @@
 <div class="responsive_menu">
     <ul class="main_menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Portfolio</a>
-            <ul>
-                <li><a href="portfolio.html">Portfolio Grid</a></li>
-                <li><a href="project-image.html">Project Image</a></li>
-                <li><a href="project-slideshow.html">Project Slideshow</a></li>
-            </ul>
-        </li>
-        <li><a href="#">Blog</a>
-            <ul>
-                <li><a href="blog.html">Blog Standard</a></li>
-                <li><a href="blog-single.html">Blog Single</a></li>
-                <li><a href="#">visit templatemo</a></li>
-            </ul>
-        </li>
-        <li><a href="archives.html">Archives</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="/">主页</a></li>
+        <li><a href="{{url('/blog')}}">博文</a></li>
+        <li><a href="{{url('/archive')}}">归档</a></li>
+        <li><a href="{{url('/about')}}">关于</a></li>
     </ul> <!-- /.main_menu -->
 </div> <!-- /.responsive_menu -->
 
@@ -28,8 +15,8 @@
             <div class="col-md-12">
 
                 <div class="pull-left logo">
-                    <a href="index.html">
-                        <img src="/home/images/logo.png" alt="Medigo by templatemo">
+                    <a href="/">
+                        <img src="/home/images/logo.png" alt="itzane" width="38">
                     </a>
                 </div>	<!-- /.logo -->
 

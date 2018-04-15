@@ -21,75 +21,32 @@
         <div class="col-md-8 blog-posts">
             <div class="row">
                 <div class="col-md-12">
+                    @foreach($articles as $article)
                     <div class="post-blog">
-                        <div class="blog-image">
-                            <a href="blog-single.html">
-                                <img src="/home/images/includes/blog1.jpg" alt="">
-                            </a>
-                        </div> <!-- /.blog-image -->
                         <div class="blog-content">
-                            <span class="meta-date"><a href="#">28 February 2084</a></span>
-                            <span class="meta-comments"><a href="#">14 Comments</a></span>
-                            <span class="meta-author"><a href="#">Candy Sharp</a></span>
-                            <h3><a href="blog-single.html">Getting Creative With the Google Maps API</a></h3>
-                            <p class="light-text">Sed consequat lobortis risus, in rutrum arcu tristique eget. Etiam accumsan lectus quis cursus porta.  Etiam a turpis sed sapien malesuada pellentesque quis id tortor.  Phasellus mattis quam enim, non accumsan nibh tincidunt sed.</p>
-                            <p>Nunc ullamcorper nisi sit amet eros dictum, eget vulputate quam rhoncus. Nulla diam eros, ultrices id lacinia ut, aliquet sit amet erat. Duis ut nulla molestie, ullamcorper ligula eu, ultricies tortor. Suspendisse quis consequat a turpis sed sapien quis id tortor <a href="blog-single.html">Continue Reading...</a></p>
+                            <span class="meta-date"><i class="fa fa-calendar"></i>&nbsp;{{$article['created_at']->format('F jS  Y')}}</span>
+                            <span class="meta-author"><i class="fa fa-bookmark"></i>&nbsp;{{$article['type']['name']}}</span>
+                            <h3><a href="/blog/{{$article['id']}}" target="_blank">{{$article['title']}}</a></h3>
+                            <p id="content"><a href="/blog/{{$article['id']}}" target="_blank">Read More...</a></p>
+                            <div class="tag-items">
+                                <span class="small-text"><i class="fa fa-tags"></i>&nbsp;标签:</span>
+                                @foreach($article->tags as $tag)
+                                    <a href="/blog?tag_id={{$tag['id']}}" rel="tag">{{$tag['name']}}</a>
+                                @endforeach
+                            </div>
                         </div> <!-- /.blog-content -->
                     </div> <!-- /.post-blog -->
-                    <div class="post-blog">
-                        <div class="blog-image">
-                            <a href="blog-single.html">
-                                <img src="/home/images/includes/blog2.jpg" alt="">
-                            </a>
-                        </div> <!-- /.blog-image -->
-                        <div class="blog-content">
-                            <span class="meta-date"><a href="#">24 February 2084</a></span>
-                            <span class="meta-comments"><a href="#">32 Comments</a></span>
-                            <span class="meta-author"><a href="#">Candy Sharp</a></span>
-                            <h3><a href="blog-single.html">Bird Profile Wellington New Zealand</a></h3>
-                            <p class="light-text">Sed consequat lobortis risus, in rutrum arcu tristique eget. Etiam accumsan lectus quis cursus porta.  Etiam a turpis sed sapien malesuada pellentesque quis id tortor.  Phasellus mattis quam enim, non accumsan nibh tincidunt sed.</p>
-                            <p>Nunc ullamcorper nisi sit amet eros dictum, eget vulputate quam rhoncus. Nulla diam eros, ultrices id lacinia ut, aliquet sit amet erat. Duis ut nulla molestie, ullamcorper ligula eu, ultricies tortor. Suspendisse quis consequat a turpis sed sapien quis id tortor <a href="blog-single.html">Continue Reading...</a></p>
-                        </div> <!-- /.blog-content -->
-                    </div> <!-- /.post-blog -->
-                    <div class="post-blog">
-                        <div class="blog-image">
-                            <a href="blog-single.html">
-                                <img src="/home/images/includes/blog3.jpg" alt="">
-                            </a>
-                        </div> <!-- /.blog-image -->
-                        <div class="blog-content">
-                            <span class="meta-date"><a href="#">20 February 2084</a></span>
-                            <span class="meta-comments"><a href="#">64 Comments</a></span>
-                            <span class="meta-author"><a href="#">Candy Sharp</a></span>
-                            <h3><a href="blog-single.html">Standard Blog Post Formating Medigo</a></h3>
-                            <p class="light-text">Sed consequat lobortis risus, in rutrum arcu tristique eget. Etiam accumsan lectus quis cursus porta.  Etiam a turpis sed sapien malesuada pellentesque quis id tortor.  Phasellus mattis quam enim, non accumsan nibh tincidunt sed.</p>
-                            <p>Nunc ullamcorper nisi sit amet eros dictum, eget vulputate quam rhoncus. Nulla diam eros, ultrices id lacinia ut, aliquet sit amet erat. Duis ut nulla molestie, ullamcorper ligula eu, ultricies tortor. Suspendisse quis consequat a turpis sed sapien quis id tortor <a href="blog-single.html">Continue Reading...</a></p>
-                        </div> <!-- /.blog-content -->
-                    </div> <!-- /.post-blog -->
-                    <div class="post-blog">
-                        <div class="blog-image">
-                            <a href="blog-single.html">
-                                <img src="/home/images/includes/blog4.jpg" alt="">
-                            </a>
-                        </div> <!-- /.blog-image -->
-                        <div class="blog-content">
-                            <span class="meta-date"><a href="#">24 February 2084</a></span>
-                            <span class="meta-comments"><a href="#">128 Comments</a></span>
-                            <span class="meta-author"><a href="#">Candy Sharp</a></span>
-                            <h3><a href="blog-single.html">Hochbunker High Definition Photography</a></h3>
-                            <p class="light-text">Sed consequat lobortis risus, in rutrum arcu tristique eget. Etiam accumsan lectus quis cursus porta.  Etiam a turpis sed sapien malesuada pellentesque quis id tortor.  Phasellus mattis quam enim, non accumsan nibh tincidunt sed.</p>
-                            <p>Nunc ullamcorper nisi sit amet eros dictum, eget vulputate quam rhoncus. Nulla diam eros, ultrices id lacinia ut, aliquet sit amet erat. Duis ut nulla molestie, ullamcorper ligula eu, ultricies tortor. Suspendisse quis consequat a turpis sed sapien quis id tortor <a href="blog-single.html">Continue Reading...</a></p>
-                        </div> <!-- /.blog-content -->
-                    </div> <!-- /.post-blog -->
+                        @endforeach
                 </div> <!-- /.col-md-12 -->
                 <div class="col-md-12">
-                    <ul class="pages">
+                    <!--<ul class="pages">
                         <li><a href="#" class="active">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">...</a></li>
                         <li><a href="#">13</a></li>
-                    </ul>
+                    </ul>-->
+                    {!! $articles->appends($articles->filter)->links() !!}
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
         </div> <!-- /.col-md-8 -->
@@ -97,61 +54,31 @@
         <div class="col-md-4">
             <div class="sidebar">
                 <div class="sidebar-widget">
-                    <h5 class="widget-title">Recent Posts</h5>
-                    <div class="last-post clearfix">
-                        <div class="thumb pull-left">
-                            <a href="#"><img src="/home/images/includes/blogthumb1.jpg" alt=""></a>
-                        </div>
-                        <div class="content">
-                            <span>24 February 2084</span>
-                            <h4><a href="#">Standard Post Formating Medigo</a></h4>
-                        </div>
-                    </div> <!-- /.last-post -->
-                    <div class="last-post clearfix">
-                        <div class="thumb pull-left">
-                            <a href="#"><img src="/home/images/includes/blogthumb2.jpg" alt=""></a>
-                        </div>
-                        <div class="content">
-                            <span>24 February 2084</span>
-                            <h4><a href="#">Standard Post Formating Medigo</a></h4>
-                        </div>
-                    </div> <!-- /.last-post -->
-                    <div class="last-post clearfix">
-                        <div class="thumb pull-left">
-                            <a href="#"><img src="/home/images/includes/blogthumb3.jpg" alt=""></a>
-                        </div>
-                        <div class="content">
-                            <span>24 February 2084</span>
-                            <h4><a href="#">Standard Post Formating Medigo</a></h4>
-                        </div>
-                    </div> <!-- /.last-post -->
-                </div> <!-- /.sidebar-widget -->
+                    <button onclick="searchList();" class="btn btn-danger"><i class="fa fa-search"></i></button>&nbsp;search...
+                </div>
                 <div class="sidebar-widget">
                     <h5 class="widget-title">Categories</h5>
                     <div class="row categories">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <ul>
-                                <li><a href="#">Standard</a></li>
-                                <li><a href="#">Audio</a></li>
-                                <li><a href="#">Video</a></li>
-                                <li><a href="#">Branding</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul>
-                                <li><a href="#">iOS Design</a></li>
-                                <li><a href="#">Business</a></li>
+                                @foreach($types as $type)
+                                <li class="col-md-6"><a href="/blog?type_id={{$type['id']}}">{{$type['name']}}</a></li>
+                                    @endforeach
                             </ul>
                         </div>
                     </div> <!-- /.row -->
                 </div> <!-- /.sidebar-widget -->
                 <div class="sidebar-widget">
-                    <h5 class="widget-title">Flickr Feed</h5>
-                    <ul id="flickr-feed" class="thumbs"></ul>
-                </div> <!-- /.sidebar-widget -->
-                <div class="sidebar-widget">
-                    <h5 class="widget-title">Text Widget</h5>
-                    <p class="light-text">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cum sociis natoque penatibus et magnis dis parturient… </p>
+                    <h5 class="widget-title">Tags</h5>
+                    <div class="row categories">
+                        <div class="col-md-12">
+                            <ul>
+                                @foreach($tags as $tag)
+                                <li class="col-md-6"><a href="/blog?tag_id={{$tag['id']}}">{{$tag['name']}}</a></li>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    </div> <!-- /.row -->
                 </div> <!-- /.sidebar-widget -->
             </div> <!-- /.sidebar -->
         </div> <!-- /.col-md-4 -->
@@ -159,3 +86,20 @@
     </div> <!-- /.row -->
 </div> <!-- /.container -->
  @endsection
+@section('script')
+    <script src="/admin/js/plugins/layer/layer.min.js"></script>
+    <script src="/js/list/list.min.js"></script>
+    <script>
+        function searchList(){
+            layer.open({
+                type: 2,
+                title: '搜索博文',
+                shadeClose: true,
+                shade: 0.8,
+                move:false,
+                area: ['480px', '90%'],
+                content:"{{url('/blog/list')}}"
+            });
+        }
+    </script>
+    @endsection

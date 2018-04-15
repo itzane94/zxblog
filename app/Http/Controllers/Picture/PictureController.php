@@ -56,7 +56,7 @@ class PictureController extends Controller
 //        }
         $file = $request->file('file');
         if($file->isValid()){ //文件出错
-        $file->store(date('Ymd'));
+        $res = $file->store(date('Ymd'));
         }
 
     }

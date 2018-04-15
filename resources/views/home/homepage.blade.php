@@ -5,8 +5,8 @@
         <div class="container home-intro-content">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Choose the Optimal Workspace for Your Business</h2>
-                    <p>We asked six entrepreneurs with drastically different office strategies for their advice on<br> choosing a workspace. </p>
+                    <p>What's in a name? That which we call a rose
+                        By any other name would smell as sweet. <br> William Shakespeare </p>
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
         </div> <!-- /.container -->
@@ -22,8 +22,8 @@
                         <i class="fa fa-umbrella fa-2x"></i>
                     </div> <!-- /.service-icon-wrap -->
                     <div class="service-cnt-wrap">
-                        <h3 class="service-title">Easy Theme Colors</h3>
-                        <p>There are 4 color themes (blue, green, red, orange) and this one is blue.</p>
+                        <h3 class="service-title">Friendship</h3>
+                        <p>与共</p>
                     </div> <!-- /.service-cnt-wrap -->
                 </div> <!-- /.service-box-wrap -->
             </div> <!-- /.col-md-4 -->
@@ -34,8 +34,8 @@
                         <i class="fa fa-mobile-phone fa-2x"></i>
                     </div> <!-- /.service-icon-wrap -->
                     <div class="service-cnt-wrap">
-                        <h3 class="service-title">Change Icons</h3>
-                        <p>Check <a rel="nofollow" href="http://fontawesome.io/icons/" target="_blank">FontAwesome</a> for your suitable icons. Example: &lt;i class=&quot;fa fa-download&quot;&gt;&lt;/i&gt;</p>
+                        <h3 class="service-title">Connection</h3>
+                        <p>你我</p>
                     </div> <!-- /.service-cnt-wrap -->
                 </div> <!-- /.service-box-wrap -->
             </div> <!-- /.col-md-4 -->
@@ -46,8 +46,8 @@
                         <i class="fa fa-pencil-square-o fa-2x"></i>
                     </div> <!-- /.service-icon-wrap -->
                     <div class="service-cnt-wrap">
-                        <h3 class="service-title">Pixel Perfect Design</h3>
-                        <p>Based on a 12 column grid system, with every pixel snapped.</p>
+                        <h3 class="service-title">Record</h3>
+                        <p>拾忆</p>
                     </div> <!-- /.service-cnt-wrap -->
                 </div> <!-- /.service-box-wrap -->
             </div> <!-- /.col-md-4 -->
@@ -62,8 +62,8 @@
                         <i class="fa fa-code fa-2x"></i>
                     </div> <!-- /.service-icon-wrap -->
                     <div class="service-cnt-wrap">
-                        <h3 class="service-title">Valid HTML5</h3>
-                        <p>We offer validated html files and well commented code on our themes.</p>
+                        <h3 class="service-title">Code</h3>
+                        <p>码</p>
                     </div> <!-- /.service-cnt-wrap -->
                 </div> <!-- /.service-box-wrap -->
             </div> <!-- /.col-md-4 -->
@@ -71,11 +71,11 @@
             <div class="col-md-4 col-sm-4">
                 <div class="service-box-wrap">
                     <div class="service-icon-wrap">
-                        <i class="fa fa-eye-slash fa-2x"></i>
+                        <i class="fa fa-book fa-2x"></i>
                     </div> <!-- /.service-icon-wrap -->
                     <div class="service-cnt-wrap">
-                        <h3 class="service-title">Retina Ready</h3>
-                        <p>Incredibly clean design provides you powerful way to grow your business.</p>
+                        <h3 class="service-title">Book</h3>
+                        <p>书</p>
                     </div> <!-- /.service-cnt-wrap -->
                 </div> <!-- /.service-box-wrap -->
             </div> <!-- /.col-md-4 -->
@@ -86,8 +86,8 @@
                         <i class="fa fa-suitcase fa-2x"></i>
                     </div> <!-- /.service-icon-wrap -->
                     <div class="service-cnt-wrap">
-                        <h3 class="service-title">Special Thanks</h3>
-                        <p>Credit goes to <a rel="nofollow" href="http://unsplash.com" target="_blank">Unsplash</a> for images used in this template.</p>
+                        <h3 class="service-title">Package</h3>
+                        <p>旅人</p>
                     </div> <!-- /.service-cnt-wrap -->
                 </div> <!-- /.service-box-wrap -->
             </div> <!-- /.col-md-4 -->
@@ -101,140 +101,34 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-header">
-                    <h2 class="section-title">recent post</h2>
-                    <p class="section-desc">Everything you need to create a professional website.</p>
+                    <h2 class="section-title"><i class="fa fa-th-list"></i></h2>
+                    <p class="section-desc">Recent Posts</p>
                 </div> <!-- /.section-header -->
             </div> <!-- /.col-md-12 -->
         </div> <!-- /.row -->
     </div> <!-- /.container -->
 
     <div id="portfolio-carousel" class="portfolio-carousel portfolio-holder">
-        <div class="item">
-            <div class="thumb-post">
-                <div class="overlay">
-                    <div class="overlay-inner">
-                        <div class="portfolio-infos">
-                            <span class="meta-category">Dashboard Template</span>
-                            <h3 class="portfolio-title"><a href="project-slideshow.html">Visual Admin</a></h3>
-                        </div>
-                        <div class="portfolio-expand">
-                            <a class="fancybox" href="/home/images/includes/project1.jpg" title="Visual Admin">
-                                <i class="fa fa-expand"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <img src="/home/images/includes/project1.jpg" alt="Visual Admin">
-            </div>
-        </div> <!-- /.item -->
-        <div class="item">
-            <div class="thumb-post">
-                <div class="overlay">
-                    <div class="overlay-inner">
-                        <div class="portfolio-infos">
-                            <span class="meta-category">Mobile Ready</span>
-                            <h3 class="portfolio-title"><a href="project-slideshow.html">Compass Template</a></h3>
-                        </div>
-                        <div class="portfolio-expand">
-                            <a class="fancybox" href="/home/images/includes/project2.jpg" title="Compass Template">
-                                <i class="fa fa-expand"></i>
-                            </a>
+        @foreach($articles as $article)
+            <div class="item">
+                <div class="thumb-post">
+                    <div class="overlay">
+                        <div class="overlay-inner">
+                            <div class="portfolio-infos">
+                                <span class="meta-category">{{$article['type']['name']}}</span>
+                                <h3 class="portfolio-title"><a href="project-slideshow.html">{{$article['title']}}</a></h3>
+                            </div>
+                            <div class="portfolio-expand">
+                                <a class="fancybox" href="{{$article['cover']}}" title="{{$article['type']['name']}} | {{$article['title']}}">
+                                    <i class="fa fa-expand"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
+                    <img src="{{$article['cover']}}" class="img-responsive" style="width:458px;height:344px;"  alt="Visual Admin">
                 </div>
-                <img src="/home/images/includes/project2.jpg" alt="Compass Template">
-            </div>
-        </div> <!-- /.item -->
-        <div class="item">
-            <div class="thumb-post">
-                <div class="overlay">
-                    <div class="overlay-inner">
-                        <div class="portfolio-infos">
-                            <span class="meta-category">Responsive Design</span>
-                            <h3 class="portfolio-title"><a href="project-slideshow.html">Awesome Theme</a></h3>
-                        </div>
-                        <div class="portfolio-expand">
-                            <a class="fancybox" href="/home/images/includes/project3.jpg" title="Awesome Theme">
-                                <i class="fa fa-expand"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <img src="/home/images/includes/project3.jpg" alt="Awesome Theme">
-            </div>
-        </div> <!-- /.item -->
-        <div class="item">
-            <div class="thumb-post">
-                <div class="overlay">
-                    <div class="overlay-inner">
-                        <div class="portfolio-infos">
-                            <span class="meta-category">Portfolio</span>
-                            <h3 class="portfolio-title"><a href="project-slideshow.html">Volton Personal Site</a></h3>
-                        </div>
-                        <div class="portfolio-expand">
-                            <a class="fancybox" href="/home/images/includes/project4.jpg" title="Volton Personal Site">
-                                <i class="fa fa-expand"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <img src="/home/images/includes/project4.jpg" alt="Volton Personal Site">
-            </div>
-        </div> <!-- /.item -->
-        <div class="item">
-            <div class="thumb-post">
-                <div class="overlay">
-                    <div class="overlay-inner">
-                        <div class="portfolio-infos">
-                            <span class="meta-category">Green</span>
-                            <h3 class="portfolio-title"><a href="project-slideshow.html">Rectangle Design</a></h3>
-                        </div>
-                        <div class="portfolio-expand">
-                            <a class="fancybox" href="/home/images/includes/project5.jpg" title="Rectangle Design">
-                                <i class="fa fa-expand"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <img src="/home/images/includes/project5.jpg" alt="Rectangle Design">
-            </div>
-        </div> <!-- /.item -->
-        <div class="item">
-            <div class="thumb-post">
-                <div class="overlay">
-                    <div class="overlay-inner">
-                        <div class="portfolio-infos">
-                            <span class="meta-category">Portfolio</span>
-                            <h3 class="portfolio-title"><a href="project-slideshow.html">Masonry Gallery</a></h3>
-                        </div>
-                        <div class="portfolio-expand">
-                            <a class="fancybox" href="/home/images/includes/project6.jpg" title="Masonry Gallery">
-                                <i class="fa fa-expand"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <img src="/home/images/includes/project6.jpg" alt="Masonry Gallery">
-            </div>
-        </div> <!-- /.item -->
-        <div class="item">
-            <div class="thumb-post">
-                <div class="overlay">
-                    <div class="overlay-inner">
-                        <div class="portfolio-infos">
-                            <span class="meta-category">Branding / Identity</span>
-                            <h3 class="portfolio-title"><a href="project-slideshow.html">Gloss Template</a></h3>
-                        </div>
-                        <div class="portfolio-expand">
-                            <a class="fancybox" href="/home/images/includes/project7.jpg" title="Gloss Template">
-                                <i class="fa fa-expand"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <img src="/home/images/includes/project7.jpg" alt="Gloss Template">
-            </div>
-        </div> <!-- /.item -->
+            </div> <!-- /.item -->
+            @endforeach
     </div> <!-- /#owl-demo -->
 </section> <!-- /.portfolio-holder -->
 
@@ -273,8 +167,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-header">
-                        <h2 class="section-title">友情连接</h2>
-                        <p class="section-desc">A friend in need is a friend indeed</p>
+                        <h2 class="section-title"><i class="fa fa-link"></i></h2>
+                        <p class="section-desc">Friendly Links</p>
                     </div> <!-- /.section-header -->
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
