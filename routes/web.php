@@ -40,10 +40,15 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/tag/add','Article\ArticleController@tag_add');
     Route::get('/tag/edit/{tag}','Article\ArticleController@tag_edit')->where('tag','[0-9]+');
     Route::get('/tag/delete/{tag}','Article\ArticleController@tag_delete')->where('tag','[0-9]+');
+    Route::get('/comment/list','Article\ArticleController@comment');
+    Route::get('/comment/comment_list','Article\ArticleController@comment_list');
+    Route::post('/comment/delete','Article\ArticleController@comment_delete');
+
 });
 Route::get('/','Home\HomepageController@index');
 Route::get('/blog','Article\ArticleController@blog');
 Route::get('/archive','Article\ArticleController@archive');
+Route::get('/archive/json','Article\ArticleController@archive_json');
 Route::get('/about','User\UserController@about');
 Auth::routes();
 Route::get('/blog/{article}','Article\ArticleController@detail')->where('article','[0-9]+');

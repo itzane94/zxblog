@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('css')
+    <link href="/css/timeline.css" rel="stylesheet">
+    @endsection
 @section('content')
 <div class="first-widget parallax" id="blog">
     <div class="parallax-overlay">
@@ -20,29 +23,85 @@
 
         <div class="col-md-12 blog-posts">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="archive-wrapper">
-                        <h3 class="archive-title">Archives by Month:</h3>
-                        <ul class="archive-list">
-                            <li><a href="#">January 2084</a></li>
-                            <li><a href="#">December 2083</a></li>
-                            <li><a href="#">November 2083</a></li>
-                            <li><a href="#">October 2083</a></li>
-                            <li><a href="#">September 2083</a></li>
-                            <li><a href="#">August 2083</a></li>
-                            <li><a href="#">July 2083</a></li>
+                <div class="col-sm-12 col-md-12">
+                    <div class="archive-wrapper" id="articles" style="overflow: hidden">
+                        <h3 class="archive-title">好！目前共计 {{ $articles->count()}} 篇博文。 继续努力。</h3>
+                        <ul class="content" style="font-size:16px;">
+                            <article>
+                                <section v-for="(value,index) in articles" v-cloak>
+                                    <span class="point-time point-blue"></span>
+                                    <time datetime="">
+                                        <span>@{{ value.month }}</span>
+                                        <span>@{{ value.year }}</span>
+                                    </time>
+                                    <aside>
+                                        <p class="things"><a :href="'/blog/' + value.id " target="_blank">@{{ value.title }}</a></p>
+                                        <p class="brief"><span class="text-yellow">@{{ value.day }}</span>@{{ value.hour }}</p>
+                                    </aside>
+                                </section>
+                            </article>
                         </ul>
+                        <div class="text-center">
+                            <navigation :pages="pages" :current.sync="pageNo" @navpage="msgListView"></navigation>
+                        </div>
                     </div>
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
+            <div class="elevator pull-right" style="cursor: pointer">
+                <img src="/images/elevator.png" alt="elevator">
+                Back to Top
+            </div>
         </div> <!-- /.col-md-12 -->
 
     </div> <!-- /.row -->
 </div> <!-- /.container -->
-
-
-
 <div class="container">
 
 </div> <!-- /.container -->
+@endsection
+@section('script')
+    <script src="/js/elevator/elevator.min.js"></script>
+    <script type="text/javascript" src="/js/vue.min.js"></script>
+    <script type="text/javascript" src="/js/pagination.js"></script>
+    <script>
+        $(function() {
+            var elementButton = document.querySelector('.elevator');
+            var elevator = new Elevator({
+                element: elementButton,
+                mainAudio: '/js/elevator/music/elevator-music.mp3',//返回过程中播放的声音
+                endAudio: '/js/elevator/music/ding.mp3'//到达顶部后的提示音
+            });
+            new Vue({
+                el:"#articles",
+                data:{
+                    pageNo: 1,
+                    pages:1,
+                    pagesize:25,
+                    articles:[]
+                },
+                methods:{
+                    msgListView:function(curPage){
+                        $.getJSON("/archive/json",{
+                            'page':curPage,
+                            'pagesize':this.pagesize
+                        },function (items) {
+                            this.articles = items.articles;
+                            this.pages = items.pages;
+                            this.pageNo = curPage;
+                        }.bind(this));
+                    }
+                },
+                created:function(){
+                    _this = this;
+                    $.getJSON("/archive/json",{
+                        'page':this.pageNo,
+                        'pagesize':this.pagesize
+                    },function (items) {
+                        this.articles = items.articles;
+                        this.pages = items.pages;
+                    }.bind(this));
+                }
+            });
+        })
+    </script>
 @endsection

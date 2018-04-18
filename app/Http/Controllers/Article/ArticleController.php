@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Stmt\Return_;
 use Validator;
 use App\Article;
 use App\Type;
@@ -38,7 +37,7 @@ class ArticleController extends Controller
         ]);
     }
     public function search_list(){
-        $datas = Article::with('type')->with('tags')->get();
+        $datas = Article::with('type')->with('tags')->orderBy('id','desc')->get();
         $articles = array();
         foreach($datas as $data){
             $tags = [];
@@ -277,7 +276,26 @@ class ArticleController extends Controller
         return view('article/blog')->with(['active'=>2,'articles'=>$articles,'types'=>$types,'tags'=>$tags]);
     }
     public function archive(){
-        return view('article/archive')->with(['active'=>3]);
+        $articles = Article::orderBy('created_at','desc')->get(['id','title','created_at']);
+        return view('article/archive')->with(['active'=>3,'articles'=>$articles]);
+    }
+    public function archive_json(){
+        $articles = Article::orderBy('created_at','desc');
+        $count = $articles->count();
+        $formData = Input::only(['page','pagesize']);
+        $start = ($formData['page']-1)*$formData['pagesize'];
+        $articles = $articles->take($formData['pagesize'])->skip($start)->orderBy('created_at','desc')->get(['id','title','created_at'])->toArray();
+        foreach($articles as $k=>$article) {
+            $articles[$k]['year'] =  date('Y',strtotime($article['created_at']));
+            $articles[$k]['month'] =  date('F',strtotime($article['created_at']));
+            $articles[$k]['day'] =  'day '.date('d',strtotime($article['created_at'])).'.  ';
+            $articles[$k]['hour'] = 'at '.date('H i:s a',strtotime($article['created_at']));
+        }
+        return response()->json([
+            'count'=>$count,
+            'articles'=>$articles,
+            'pages'=>ceil($count/$formData['pagesize'])
+        ]);
     }
     public function detail(Article $article){
         $types = Type::all();
@@ -398,5 +416,40 @@ class ArticleController extends Controller
             'comments'=>$comments,
             'pages'=>ceil($count/$formData['pagesize'])
         ]);
+    }
+    public function comment(){
+        return view('article.comment_list');
+    }
+    public function comment_list(){
+        $formData = Input::get();
+        //检查数据合法性
+        $query = Comment::query();
+        if(isset($formData['keyword'])){
+            $query->where('content','like',"%{$formData['keyword']}%");
+        }
+        $count = $query->count();
+        return response()->json([
+            'rows'=> $query->with(['article'=>function($q){
+                        $q->select(['id','title']);
+                        }])->offset($formData['start'])->limit($formData['pagesize'])->get()->toArray(),
+            'total'=>$count
+        ]);
+    }
+    public function comment_delete(){
+        $dels = Input::only('dels');
+        $dels = explode(',',$dels['dels']);
+        if($dels){
+            $count = DB::table('comments')->whereIn('id',$dels)->delete();
+            if($count){
+                return response()->json(['status'=>200,'msg'=>$count]);
+            }else{
+                return response()->json(['status'=>201,'msg'=>'failed']);
+            }
+        }else{
+            return response()->json([
+                'status'=>200,
+                'msg'=>'success'
+            ]);
+        }
     }
 }

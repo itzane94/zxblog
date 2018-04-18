@@ -116,10 +116,10 @@
                         <div class="overlay-inner">
                             <div class="portfolio-infos">
                                 <span class="meta-category">{{$article['type']['name']}}</span>
-                                <h3 class="portfolio-title"><a href="project-slideshow.html">{{$article['title']}}</a></h3>
+                                <h3 class="portfolio-title"><a href="/blog/{{$article['id']}}" target="_blank">{{$article['title']}}</a></h3>
                             </div>
                             <div class="portfolio-expand">
-                                <a class="fancybox" href="{{$article['cover']}}" title="{{$article['type']['name']}} | {{$article['title']}}">
+                                <a class="fancybox" href="{{$article['cover']}}" title="{{$article['title']}}">
                                     <i class="fa fa-expand"></i>
                                 </a>
                             </div>

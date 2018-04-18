@@ -4958,7 +4958,9 @@ jQuery(document).ready(function($){
     function ssc_wheel(event) {
 
         if (!ssc_initdone) {
-            init();
+            try{init();}catch(err){
+
+            }
         }
 
         var target = event.target;
@@ -5020,11 +5022,12 @@ jQuery(document).ready(function($){
         var shift, x = 0, y = 0;
         var elem = ssc_overflowingAncestor(ssc_activeElement);
         //var clientHeight = elem.clientHeight?elem.clientHeight:window.innerHeight;
-        if(elem.clientHeight != undefined){
-            clientHeight = elem.clientHeight
-        }else{
-            clientHeight = window.innerHeight;
-        }
+        //if(typeof (elem.clientHeight) == undefined){
+          //  clientHeight = window.innerHeight;
+        //}else{
+         //   clientHeight = elem.clientHeight
+        //}
+        clientHeight = window.innerHeight;
         if (elem == document.body) {
 
         }

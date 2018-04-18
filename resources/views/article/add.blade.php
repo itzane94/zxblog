@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>H+ 后台主题UI框架 - Bootstrap Table</title>
-    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
-    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
-
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
     <link href="/admin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
     <link href="/admin/css/animate.css" rel="stylesheet">
@@ -19,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/admin/css/plugins/markdown/bootstrap-markdown.min.css" />
     <link href="/admin/css/plugins/chosen/chosen.css" rel="stylesheet">
 </head>
-
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight" style="padding:0px;">
         <div class="ibox float-e-margins">
@@ -100,9 +91,7 @@
 <!-- 全局js -->
 <script src="/admin/js/jquery.min.js?v=2.1.4"></script>
 <script src="/admin/js/bootstrap.min.js?v=3.3.6"></script>
-
 <!-- 自定义js -->
-<script src="/admin/js/content.js?v=1.0.0"></script>
 <!-- Chosen -->
 <script src="/admin/js/plugins/chosen/chosen.jquery.js"></script>
 <!-- simditor -->
@@ -110,7 +99,6 @@
 <script type="text/javascript" src="/admin/js/plugins/markdown/to-markdown.js"></script>
 <script type="text/javascript" src="/admin/js/plugins/markdown/bootstrap-markdown.js"></script>
 <script type="text/javascript" src="/admin/js/plugins/markdown/bootstrap-markdown.zh.js"></script>
-
 <script src="/admin/js/plugins/layer/layer.min.js"></script>
 <!--统计代码，可删除-->
 <script>
@@ -178,7 +166,5 @@
         });
     }
 </script>
-
 </body>
-
 </html>

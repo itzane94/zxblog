@@ -8,13 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>博客 | 后台</title>
+    <link rel="shortcut icon" href="/home/images/favicon.ico" type="image/x-icon" />
+    <title>itzane博客 | 后台登录</title>
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
-    <script type="text/javascript" src="/js/jquery.tscookie.js"></script>
-    <script type="text/javascript" src="/js/jquery.validation.min.js"></script>
     <script type="text/javascript" src="/js/jquery.supersized.min.js" ></script>
     <script type="text/javascript" src="/js/jquery.progressBar.js"></script>
     <script type="text/javascript" src="/js/layer/layer.js"></script>
@@ -107,17 +106,15 @@
         if(top.location!=this.location)	top.location=this.location;
         $('#admin_name').focus();
         if ($.browser.msie && ($.browser.version=="6.0" || $.browser.version=="7.0")){
-            window.location.href='http://www.shopn.com/public/Admin/ie6update.html';
+            window.location.href='/';
         }
         $("#captcha").nc_placeholder();
         //动画登录
     });
     var verifyUrl = "{{captcha_src()}}";
-
     function verifyimage(){
         $('#codeimage').attr('src', verifyUrl+'&r='+Math.random());
     }
-
 </script>
 </body>
 </html>

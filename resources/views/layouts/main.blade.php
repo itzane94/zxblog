@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>itzane | a life-long learner</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="templatemo">
+    <meta name="keywords" content="itzane 博客">
+    <meta name="description" content="个人博客">
+    <meta name="author" content="itzane">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/home/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/home/css/misc.css">
+    <link rel="stylesheet" href="/home/css/common.css">
     <link rel="stylesheet" href="/home/css/blue-scheme.css">
     <link rel="shortcut icon" href="/home/images/favicon.ico" type="image/x-icon" />
     @yield("css")

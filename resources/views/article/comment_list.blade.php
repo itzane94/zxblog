@@ -2,34 +2,28 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>itzane | a life-long learner</title>
-    <meta name="keywords" content="itzane 博客">
-    <meta name="description" content="个人博客">
-    <meta name="author" content="itzane">
     <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
     <link href="/admin/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
     <link href="/admin/css/animate.css" rel="stylesheet">
     <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
+
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
+
     <div class="col-sm-12">
         <div id="toolbar" class="btn-group">
-            <button id="btn_add" type="button" onclick="addArt();" class="btn btn-outline btn-default" title="新增">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </button>
             <button id="btn_delete" type="button" class="btn btn-outline btn-default" title="删除">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
         </div>
         <!-- Example Events -->
-        <table id="art_Table">
-        <tbody>
-        </tbody>
+        <table id="comment_Table">
+            <tbody>
+            </tbody>
         </table>
         <!-- End Example Events -->
     </div>
@@ -52,8 +46,9 @@
 <!--统计代码，可删除-->
 <script>
     $(function(){
-         $table = $("#art_Table").bootstrapTable({
-            url: "{{url('/admin/article/list_data')}}",
+        layer.config({extend: 'extend/layer.ext.js'});
+        $table = $("#comment_Table").bootstrapTable({
+            url: "{{url('/admin/comment/comment_list')}}",
             method:'get',
             dataType:'json',
             undefinedText:'空',
@@ -61,15 +56,16 @@
             toolbar: '#toolbar',//工具按钮用哪个容器
             search: true,
             //  strictSearch: true,
+            cardView: true,
             pagination: true,
             pageSize: 5,
             pageList: [5, 10, 15, 20],
             showColumns: true,
             showRefresh: false,
-            showToggle: false,
+            showToggle: true,
             locale: "zh-CN",
             striped: true,
-            sortable: true,                     //是否启用排序
+            sortable: false,                     //是否启用排序
             //  sortOrder: "asc",                   //排序方式
             sidePagination:'server',
             queryParams:function(params){
@@ -95,42 +91,34 @@
                     title:'ID',
                     field:'id',
                     align:'center',
-                    sortable: true
 
                 },
                 {
-                    title:'标题',
-                    field:'title',
+                    title:'用户名',
+                    field:'username',
                     align:'center'
                 },
                 {
-                    title:'封面',
-                    field:'cover',
+                    title:'邮箱',
+                    field:'email',
                     align:'center',
-                    formatter:function (value,row,index) {
-                    return '<img class="img-thumbnail" src="'+row.cover+'" width="120" height="90"/>';
-                    }
                 },
                 {
-                    title:'类型',
-                    field:'type',
+                    title:'评论内容',
+                    field:'content',
                     align:'center',
-                    formatter:function(value,row,index){
-                        return row.type.name;
-                    }
                 },
                 {
                     title:'创建时间',
                     field:'created_at',
                     align:'center',
-                    sortable: true
                 },
                 {
                     title:'操作',
                     align:'center',
                     formatter:function (value,row,index) {
-                        var edit = '<button type="button" class="btn btn-outline btn-default" onclick="editArt('+row.id+')" title="编辑">'+
-                            '<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>'+
+                        var edit = '<button type="button" class="btn btn-outline btn-default" onclick="void(0);" title="回复">'+
+                            '<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>'+
                             '</button>';
                         return edit;
                     }
@@ -145,27 +133,27 @@
                 ids.push(rows[i].id);
             }
             if(ids.length){
-                var confirm = parent.layer.confirm('您确认要删除所选的文章吗？', {
-                    title:'删除文章',
+                var confirm = parent.layer.confirm('您确认要删除所选的评论吗？', {
+                    title:'删除评论',
                     btn: ['确定','取消'], //按钮
                     offset:['30%','50%'],
                 }, function(){
                     $.post(
-                        "{{url('/admin/article/del')}}",
+                        "{{url('/admin/comment/delete')}}",
                         {
                             '_token':"{{csrf_token()}}",
                             'dels':ids.join(',')
                         },
                         function(response){
                             parent.layer.close(confirm);
-                                if(response.status == 200){
-                                    parent.layer.msg('您已成功删除'+response.msg+'条数据');
-                                    setTimeout(function(){
-                                        $("#art_Table").bootstrapTable('refresh', {url: "{{url('/admin/article/list_data')}}"});
-                                    },2000);
-                                }else{
+                            if(response.status == 200){
+                                parent.layer.msg('您已成功删除'+response.msg+'条数据');
+                                setTimeout(function(){
+                                    $("#comment_Table").bootstrapTable('refresh');
+                                },2000);
+                            }else{
 
-                                }
+                            }
                         },
                         'json'
                     );
@@ -179,33 +167,6 @@
             }
         });
     });
-    function addArt(){
-        //iframe层
-         parent.layer.open({
-            type: 2,
-            title: '添加文章',
-            shadeClose: true,
-            shade: 0.8,
-            area: ['70%', '90%'],
-            content: "{{url('/admin/article/add')}}", //iframe的url
-            end: function () {
-                $("#art_Table").bootstrapTable('refresh');
-            }
-        });
-    }
-    function editArt(id){
-        parent.layer.open({
-            type: 2,
-            title: '编辑文章',
-            shadeClose: true,
-            shade: 0.8,
-            area: ['70%', '90%'],
-            content: "/admin/article/edit/"+id, //iframe的url
-            end: function () {
-                $("#art_Table").bootstrapTable('refresh');
-            }
-        });
-    }
 </script>
 
 </body>

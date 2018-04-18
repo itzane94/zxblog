@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('css')
-    <link rel="stylesheet" href="/home/css/bootstrap-markdown.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 @endsection
 @section('content')
@@ -54,8 +53,8 @@
                     <div id="blog-comments" class="blog-post-comments">
                         <h3><i class="fa fa-comments-o"></i> Comments</h3>
                         <div class="blog-comments-content">
-                            <div v-if="comments.length >0">
-                            <div class="media" v-for="(value,index) in comments">
+                            <div v-if="comments.length >0" v-cloak>
+                            <div class="media" v-for="(value,index) in comments" v-cloak>
                                 <div class="pull-left">
                                     <img class="media-object img-thumbnail" src="/images/gravatar.jpg" width="64" alt="gravatar">
                                 </div>
@@ -127,7 +126,7 @@
 @endsection
 @section('script')
     <script type="text/javascript" src="/home/js/marked.min.js"></script>
-    <script type="text/javascript" src="/js/vue.js"></script>
+    <script type="text/javascript" src="/js/vue.min.js"></script>
     <script type="text/javascript" src="/js/pagination.js"></script>
     <script src="/admin/js/plugins/layer/layer.min.js"></script>
     <script>

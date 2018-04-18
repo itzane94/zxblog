@@ -5,22 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-
-    <title>H+ 后台主题UI框架 - 主页</title>
-
-    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
-    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
-
+    <title>itzane | a life-long learner</title>
+    <meta name="keywords" content="itzane 博客">
+    <meta name="description" content="itzane 博客后台">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
-
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link rel="shortcut icon" href="/home/images/favicon.ico" type="image/x-icon" />
+    <link href="/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="/admin/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
     <link href="/admin/css/animate.css" rel="stylesheet">
     <link href="/admin/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
-
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
 <div id="wrapper">
     <!--左侧导航开始-->
@@ -66,7 +62,7 @@
                             <a class="J_menuItem" href="{{url('/admin/tag')}}">标签</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="index_v3.html">评论</a>
+                            <a class="J_menuItem" href="{{url('/admin/comment/list')}}">评论</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="{{url('/admin/picture/tree')}}">图片</a>
@@ -75,7 +71,7 @@
 
                 </li>
                 <li>
-                    <a class="J_menuItem" href="layouts.html"><i class="fa fa-paw"></i> <span class="nav-label">访问</span></a>
+                    <a class="J_menuItem" href="#"><i class="fa fa-paw"></i> <span class="nav-label">访问</span></a>
                 </li>
 
 
@@ -129,12 +125,6 @@
         <div class="row J_mainContent" id="content-main">
             <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="{{url('/admin/home/welcome')}}" frameborder="0" data-id="index_v1.html" seamless></iframe>
         </div>
-        <!--
-        <div class="footer">
-            <div class="pull-right">&copy; 2014-2017 <a href="http://www.zi-han.net/" target="_blank">zihan's blog</a>
-            </div>
-        </div>
-        -->
     </div>
     <!--右侧部分结束-->
     <!--右侧边栏开始-->
@@ -214,7 +204,7 @@
                         <div class="sidebar-message">
                             <a href="#">
                                 <div class="pull-left text-center">
-                                    <img alt="image" class="img-circle message-avatar" src="/admin/img/a2.jpg">
+                                    <img alt="image" class="img-circle message-avatar" src="/admin/img/webuploader.png">
                                 </div>
                                 <div class="media-body">
                                     HCY48之音乐大魔王会员专属皮肤已上线，快来一键换装拥有他，宣告你对华晨宇的爱吧！
@@ -246,22 +236,18 @@
                             </a>
                         </li>
                     </ul>
-
                 </div>
             </div>
-
         </div>
     </div>
     <!--右侧边栏结束-->
 </div>
-
 <!-- 全局js -->
 <script src="/admin/js/jquery.min.js?v=2.1.4"></script>
 <script src="/admin/js/bootstrap.min.js?v=3.3.6"></script>
 <script src="/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="/admin/js/plugins/layer/layer.min.js"></script>
-
 <!-- 自定义js -->
 <script src="/admin/js/hplus.js?v=4.1.0"></script>
 <script type="text/javascript" src="/admin/js/contabs.js"></script>
