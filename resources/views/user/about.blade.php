@@ -21,17 +21,58 @@
         <div class="col-md-12 blog-posts">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="contact-wrapper">
-                        <h3>Get In Touch With Us</h3>
-                        <p>Nihil, aperiam, ad molestiae ut enim reprehenderit rem repudiandae ducimus dolorum obcaecati rerum accusamus provident atque eos cum. Reiciendis, modi, sint, vel, eligendi veniam esse qui quasi voluptas recusandae eum accusamus error animi expedita amet rem ad quos.</p>
-                        <div class="contact-map">
-                            <div class="google-map-canvas" id="map-canvas" style="height: 320px;">
-                            </div>
-                        </div>
+                    <div class="col-md-offset-8 col-sm-offset-8"><img id="gravatar" class="img-circle" src="{{$admin->gravatar}}" alt=""></div>
+                    <div class="contact-wrapper" id="self-info">
+                        <p>Hello guys!</p>
+                        <p>我是： {{$admin->name}}</p>
+                        <p>我的座右铭： {{$admin->autograph}}</p>
+                        <p>{{$admin->description}}</p>
+                        <p>MR.{{$admin->name}}</p>
                     </div> <!-- /.contact-wrapper -->
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
         </div> <!-- /.col-md-12 -->
     </div> <!-- /.row -->
 </div> <!-- /.container -->
+<section id="blogPosts" class="parallax">
+    <div class="parallax-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header">
+                        <h2 class="section-title"><i class="fa fa-link"></i></h2>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.col-md-12 -->
+            </div> <!-- /.row -->
+            <div class="row latest-posts">
+                <div class="col-md-3 col-sm-6">
+                    <div class="blog-post clearfix">
+                        <a href="http://www.laruence.com/" target="_blank">[风雪之隅]</a>
+                    </div> <!-- /.blog-post -->
+                </div> <!-- /.col-md-4 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="blog-post clearfix">
+                        <a href="http://rango.swoole.com/" target="_blank">[Rango]</a>
+                    </div> <!-- /.blog-post -->
+                </div> <!-- /.col-md-4 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="blog-post clearfix">
+                        <a href="http://www.ruanyifeng.com" target="_blank">[阮一峰]</a>
+                    </div> <!-- /.blog-post -->
+                </div> <!-- /.col-md-4 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="blog-post clearfix">
+                        <a href="https://www.liaoxuefeng.com/" target="_blank">[廖雪峰]</a>
+                    </div> <!-- /.blog-post -->
+                </div> <!-- /.col-md-4 -->
+		<div class="col-md-3 col-sm-6">
+                    <div class="blog-post clearfix">
+                        <a href="https://www.mrhaha-dw.com" target="_blank">[乐享生活]</a>
+                    </div> <!-- /.blog-post -->
+                </div> <!-- /.col-md-4 -->
+
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /.parallax-overlay -->
+</section> <!-- /#blogPosts -->
 @endsection

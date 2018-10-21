@@ -93,6 +93,13 @@
                     align:'center',
 
                 },
+
+		{
+                    title:'文章标题',
+                    field:'article.title',
+                    align:'center',
+
+                },
                 {
                     title:'用户名',
                     field:'username',

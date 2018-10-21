@@ -64,14 +64,6 @@
                             <input type="radio" value="2" id="optionsRadios2" name="optionsRadios">隐藏</label>
                     </div>
                 </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">封面图片</label>
-
-                    <div class="col-sm-6">
-                        <label><img id="cover" src="{{$article['cover']}}" alt="no images" width="120" height="90" class="img-thumbnail img-responsive"><span style="padding:0 20px;"><label class="btn btn-outline" onclick="setCover()"><i class="glyphicon glyphicon-plus"></i></label></span></label>
-                    </div>
-                </div>
                 <!--edit-->
                 <label class="col-sm-12 control-label">
                     <div class="ibox-content checkForm">
@@ -114,7 +106,6 @@
                 "title":$(":input[name='title']").val(),
                 "type_id":$("select[name='type']").val(),
                 "tags_id":tags.join(','),
-                "cover":$('#cover').attr('src'),
                 "display":$(':radio').val(),
                 "content":$('#content').val(),
                 "_token":"{{csrf_token()}}"
@@ -155,14 +146,6 @@
             offset:['4%','70%'],
             area: ['30%', '90%'],
             content: "{{url('/admin/picture/board')}}", //iframe的url
-        });
-    }
-    function setCover(){
-        layer.prompt({
-            title:'url路径'
-        },function(value, index, elem){
-            $('#cover').attr('src',value);
-            layer.close(index);
         });
     }
 </script>

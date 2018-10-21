@@ -62,7 +62,7 @@
             search: true,
             //  strictSearch: true,
             pagination: true,
-            pageSize: 5,
+            pageSize: 10,
             pageList: [5, 10, 15, 20],
             showColumns: true,
             showRefresh: false,
@@ -102,14 +102,6 @@
                     title:'标题',
                     field:'title',
                     align:'center'
-                },
-                {
-                    title:'封面',
-                    field:'cover',
-                    align:'center',
-                    formatter:function (value,row,index) {
-                    return '<img class="img-thumbnail" src="'+row.cover+'" width="120" height="90"/>';
-                    }
                 },
                 {
                     title:'类型',

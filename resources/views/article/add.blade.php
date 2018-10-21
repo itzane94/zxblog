@@ -63,13 +63,6 @@
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">封面</label>
-
-                        <div class="col-sm-6">
-                            <label><img id="cover" src="/images/placeholder.png" alt="no images" width="120" height="90" class="img-thumbnail"><span style="padding:0 20px;"><label class="btn btn-outline" onclick="setGravatar()"><i class="glyphicon glyphicon-plus"></i></label></span></label>
-                        </div>
-                    </div>
                     <!--edit-->
                         <label class="col-sm-12 control-label">
                             <div class="ibox-content checkForm">
@@ -113,7 +106,6 @@
             {
             "title":$(":input[name='title']").val(),
                 "type_id":$("select[name='type']").val(),
-                "cover":$('#cover').attr('src'),
                 "tags_id":tags.join(','),
                 "display":$(':radio').val(),
                 "content":$('#content').val(),

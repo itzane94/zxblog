@@ -39,7 +39,7 @@ class UserController extends Controller
         }
     }
     public function edit(){
-        $formData = Input::only(['name','email','password','gravatar','autograph']);
+        $formData = Input::only(['name','email','password','gravatar','autograph','description']);
         $validator = validator::make($formData,[
             'name'=>'required|min:6|max:16',
             'email'=>'required|email',
@@ -53,6 +53,7 @@ class UserController extends Controller
                 "email"=>$formData['email'],
                 "gravatar"=>$formData['gravatar'],
                 "autograph"=>$formData['autograph'],
+                "description"=>$formData['description']
             ];
             if($formData['password']){
                 $update['password'] = bcrypt($formData['password']);
@@ -79,7 +80,10 @@ class UserController extends Controller
         return view('dashboard.info');
     }
     public function about(){
-        return view('user/about')->with(['active'=>4]);
+        $admin = DB::table('admins')->find(1);
+        return view('user/about')->with(['active'=>4,'admin'=>$admin]);
     }
-
+   public function echo_square(){
+        return view('user/echo');
+    }
 }

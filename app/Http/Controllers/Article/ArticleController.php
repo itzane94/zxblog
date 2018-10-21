@@ -72,12 +72,11 @@ class ArticleController extends Controller
     }
     public function add(Request $request){
         if($request->isMethod('post')){
-            $formData = Input::only(['title','type_id','tags_id','display','content','cover']);
+            $formData = Input::only(['title','type_id','tags_id','display','content']);
             $validator = validator::make($formData,[
                 'title'=>'required|max:100',
                 'type_id'=>'required|integer',
                 'display'=>'required|boolean',
-                'cover'=>'required|max:100'
             ]);
             if(!$validator->passes()){
                 $errors = $validator->errors();
@@ -88,7 +87,6 @@ class ArticleController extends Controller
             $art->type_id = $formData['type_id'];
             $art->display = $formData['display'];
             $art->content = $formData['content'];
-            $art->cover = $formData['cover'];
             $art->user_id = Auth::guard('admin')->user()->id;
             if($art->save()){ //文章添加成功
                 if($formData['tags_id']){
@@ -113,12 +111,11 @@ class ArticleController extends Controller
     }
     public function edit(Article $article,Request $request){
         if($request->isMethod('post')){
-            $formData = Input::only(['title','type_id','tags_id','display','content','cover']);
+            $formData = Input::only(['title','type_id','tags_id','display','content']);
             $validator = validator::make($formData,[
                 'title'=>'required|max:100',
                 'type_id'=>'required|integer',
                 'display'=>'required|boolean',
-                'cover'=>'required|max:100'
             ]);
             if(!$validator->passes()){
                 $errors = $validator->errors();
@@ -128,9 +125,8 @@ class ArticleController extends Controller
             $article->type_id = $formData['type_id'];
             $article->display = $formData['display'];
             $article->content = $formData['content'];
-            $article->cover = $formData['cover'];
             $article->user_id = Auth::guard('admin')->user()->id;
-            if($article->save()){
+	    if($article->save()){
                 $tags = explode(',',$formData['tags_id']);
                 //dd($tags);die;
                 $article->tags()->sync($tags); //自动同步

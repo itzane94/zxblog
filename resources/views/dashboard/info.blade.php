@@ -45,6 +45,14 @@
                     </div>
                 </div>
                 <div class="hr-line-dashed"></div>
+                <div class="form-group checkForm">
+                    <label class="col-sm-2 control-label">描述</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" required id="description" name="description"  placeholder="说说自己">{{Auth::guard('admin')->user()->description}}</textarea>
+                    </div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">更改密码</label>
                     <div class="col-sm-10">
@@ -95,6 +103,7 @@
         var autograph = $('#autograph').val();
         var gravatar = $('#gravatar').attr('src');
         var password = $('#password').val();
+        var description = $('#description').val();
         var flag = true;
         if(name.length<=0){
             $('.checkForm').eq(0).addClass('has-error');
@@ -124,7 +133,8 @@
                 email:email,
                 autograph:autograph,
                 gravatar:gravatar,
-                password:password
+                password:password,
+                description:description
             },
             function(response){
                 if(response.status == 'success'){

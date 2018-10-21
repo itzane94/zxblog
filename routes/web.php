@@ -43,6 +43,11 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get('/comment/list','Article\ArticleController@comment');
     Route::get('/comment/comment_list','Article\ArticleController@comment_list');
     Route::post('/comment/delete','Article\ArticleController@comment_delete');
+    Route::get('/setting/tips','Setting\TipsController@index');
+    Route::get('/setting/tips/json','Setting\TipsController@tip_json');
+    Route::post('/setting/tips/add','Setting\TipsController@tip_add');
+    Route::post('/setting/tips/save/{tips}','Setting\TipsController@tip_save');
+    Route::get('/setting/tips/delete/{tips}','Setting\TipsController@tip_delete');
 
 });
 Route::get('/','Home\HomepageController@index');
@@ -50,6 +55,7 @@ Route::get('/blog','Article\ArticleController@blog');
 Route::get('/archive','Article\ArticleController@archive');
 Route::get('/archive/json','Article\ArticleController@archive_json');
 Route::get('/about','User\UserController@about');
+Route::get('/echo','User\UserController@echo_square');
 Auth::routes();
 Route::get('/blog/{article}','Article\ArticleController@detail')->where('article','[0-9]+');
 Route::get('/blog/list','Article\ArticleController@search_list');

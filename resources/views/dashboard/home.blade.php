@@ -71,11 +71,13 @@
 
                 </li>
                 <li>
-                    <a class="J_menuItem" href="#"><i class="fa fa-paw"></i> <span class="nav-label">访问</span></a>
+                    <a  href="#"><i class="fa fa-cogs"></i> <span class="nav-label">设置</span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="{{url('/admin/setting/tips')}}" data-index="0">Tips</a>
+                        </li>
+                    </ul>
                 </li>
-
-
-
 
             </ul>
         </div>
