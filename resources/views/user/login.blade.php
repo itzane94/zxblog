@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="shortcut icon" href="/home/images/favicon.ico" type="image/x-icon" />
-    <title>itzane博客 | 后台登录</title>
+    <title>zane'Blog</title>
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/js/jquery.js"></script>
@@ -29,7 +29,7 @@
 <div class="login-layout">
     <div class="top">
         <h5><em></em></h5>
-        <h2>登录</h2>
+        <h2>hi zane</h2>
     </div>
     <form method="post" id="form_login" action="{{ route('login') }}">
         {{ csrf_field() }}

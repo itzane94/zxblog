@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>itzane | a life-long learner</title>
-    <meta name="keywords" content="itzane 博客">
+    <title>zane'Blog</title>
+    <meta name="keywords" content="zane 博客">
     <meta name="description" content="个人博客">
-    <meta name="author" content="itzane">
+    <meta name="author" content="zane">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/home/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/home/css/misc.css">

@@ -45,27 +45,7 @@
                 </div> <!-- /.col-md-12 -->
             </div> <!-- /.row -->
             <div class="row latest-posts">
-                <div class="col-md-3 col-sm-6">
-                    <div class="blog-post clearfix">
-                        <a href="http://www.laruence.com/" target="_blank">[风雪之隅]</a>
-                    </div> <!-- /.blog-post -->
-                </div> <!-- /.col-md-4 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="blog-post clearfix">
-                        <a href="http://rango.swoole.com/" target="_blank">[Rango]</a>
-                    </div> <!-- /.blog-post -->
-                </div> <!-- /.col-md-4 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="blog-post clearfix">
-                        <a href="http://www.ruanyifeng.com" target="_blank">[阮一峰]</a>
-                    </div> <!-- /.blog-post -->
-                </div> <!-- /.col-md-4 -->
-                <div class="col-md-3 col-sm-6">
-                    <div class="blog-post clearfix">
-                        <a href="https://www.liaoxuefeng.com/" target="_blank">[廖雪峰]</a>
-                    </div> <!-- /.blog-post -->
-                </div> <!-- /.col-md-4 -->
-		<div class="col-md-3 col-sm-6">
+		        <div class="col-md-3 col-sm-6">
                     <div class="blog-post clearfix">
                         <a href="https://www.mrhaha-dw.com" target="_blank">[乐享生活]</a>
                     </div> <!-- /.blog-post -->

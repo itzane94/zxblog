@@ -16,7 +16,7 @@ class UserController extends Controller
         }else{
             $formData = Input::only(['name','password','captcha']);
             $validator = validator::make($formData,[
-                'name'=>'required|min:6|max:16',
+                'name'=>'required|min:4|max:16',
                 'password'=>'required|min:6|max:20',
                 'captcha'=>'required|captcha'
             ]);
