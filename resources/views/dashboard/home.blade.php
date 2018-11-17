@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-    <title>itzane | a life-long learner</title>
+    <title>zane'Blog</title>
     <meta name="keywords" content="zane'Blog">
     <meta name="description" content="zane'Blog">
     <!--[if lt IE 9]>
