@@ -28,7 +28,6 @@
                             <li @if($active == 2)class="active"@endif><a href="{{url('/blog')}}">博文</a></li>
                             <li @if($active == 3)class="active"@endif><a href="{{url('/archive')}}">归档</a></li>
                             <li @if($active == 4)class="active"@endif><a href="{{url('/about')}}">关于</a></li>
-			   <li><a href="{{url('/echo')}}" target="_blank">回声</a></li>
                         </ul> <!-- /.sf-menu -->
                     </nav> <!-- /.main-nav -->
 

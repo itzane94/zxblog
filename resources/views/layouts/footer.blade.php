@@ -14,7 +14,7 @@
         </div> <!-- /.row -->
         <div class="row">
             <div class="col-md-12">
-                <p class="copyright-text"><i class="fa fa-heart"></i> itzane</p>
+                <p class="copyright-text"><i class="fa fa-heart"></i>zane</p>
             </div> <!-- /.col-md-12 -->
         </div> <!-- /.row -->
     </div> <!-- /.container -->
